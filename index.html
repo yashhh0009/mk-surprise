@@ -12,12 +12,10 @@
         /* Background Layers with Dark Overlay for Text Readability */
         .bg-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 2s ease; z-index: 0; }
         
-        /* Updated Page 1 bg for better loading */
         #bg-intro { background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/bg1.jpg') center/cover no-repeat; background-color: #1a1a1d; opacity: 1; }
-        
         #bg-floral-grid { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/bg1.jpg') center/cover no-repeat; }
         #bg-floral-pastel { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/bg2.jpg') center/cover no-repeat; }
-        #bg-sunflowers { background: linear-gradient(to bottom, #fa9c7a 0%, #ffd700 100%); }
+        #bg-page5 { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/bg3.png') center/cover no-repeat; }
         #bg-black { background-color: #050505; }
 
         /* Screen Management */
@@ -65,10 +63,14 @@
 </head>
 <body>
 
+    <audio id="bg-music" loop preload="auto" playsinline>
+        <source src="song/song.mpeg" type="audio/mpeg">
+    </audio>
+
     <div id="bg-intro" class="bg-layer"></div>
     <div id="bg-floral-grid" class="bg-layer"></div>
     <div id="bg-floral-pastel" class="bg-layer"></div>
-    <div id="bg-sunflowers" class="bg-layer"></div>
+    <div id="bg-page5" class="bg-layer"></div>
     <div id="bg-black" class="bg-layer"></div>
 
     <div class="flower f1">🌻</div>
@@ -89,9 +91,9 @@
         <div class="polaroid fade-in delay-1">
             <img src="images/img3.png" alt="Her Photo" class="photo-img" onerror="this.onerror=null; this.src='images/img3.jpg';">
         </div>
-        <p class="fade-in delay-2">I know abhi tumhare days are revolving around books, syllabus and little little stress...</p>
-        <p class="fade-in delay-3">Lekin aaj ke liye saari tension se bahar aao.</p>
-        <p class="fade-in delay-4">Duniya mein kaafi khoobsurat cheezein hain... <span class="highlight">jaise yeh smile. ☺️</span></p>
+        <p class="fade-in delay-2">I know abhi your days are revolving around books, syllabus and little little stress...</p>
+        <p class="fade-in delay-3">Lekin aaj ke liye saari tension bhul jaa.</p>
+        <p class="fade-in delay-4">Duniya mein kaafi khoobsurat cheezein hain... <span class="highlight">jaise ki marine drive aur yeh smile. ☺️</span></p>
         
         <button class="btn fade-in delay-5" style="width: auto; padding: 12px 40px;" onclick="nextPage(2, 3)">Continue 👀</button>
     </div>
@@ -111,7 +113,7 @@
             <img src="images/img1.png" alt="Childhood" class="photo-img" onerror="this.onerror=null; this.src='images/img1.jpg';">
         </div>
         <p class="fade-in delay-2">And the second... no matter how old you grow...</p>
-        <p class="fade-in delay-3">chocolates aur desserts dekhte hi, tumhare andar ka yeh cute sa <span class="highlight">'inner monster'</span> humesha aise hi bahar aaye! 👻🎂</p>
+        <p class="fade-in delay-3">chocolates aur desserts dekhte hi, tere andar ka yeh cute sa <span class="highlight">'inner monster'</span> humesha aise hi bahar aaye! 👻🎂</p>
         
         <button class="btn fade-in delay-4" style="width: auto; padding: 12px 40px;" onclick="nextPage(4, 5)">Next 💛</button>
     </div>
@@ -120,40 +122,51 @@
         <div class="polaroid fade-in delay-1" style="transform: rotate(-3deg); width: 200px;">
             <img src="images/img5.png" alt="Garden Photo" class="photo-img" onerror="this.onerror=null; this.src='images/img5.jpg';">
         </div>
-		<p class="fade-in delay-2">They say sunflowers spend their whole lives chasing the light...</p>
+        <p class="fade-in delay-2">They say sunflowers spend their whole lives chasing the light...</p>
         <p class="fade-in delay-3">But looking at you in this frame...</p>
         <p class="fade-in delay-4">I think the light just found its favorite place to rest. <span class="highlight">🌻✨</span></p>
-		
+        
         <button class="btn fade-in delay-5" style="width: auto; padding: 12px 40px;" onclick="nextPage(5, 6)">One last thing...</button>
     </div>
 
     <div id="page-6" class="screen">
         <p class="fade-in delay-1" style="opacity: 0.8; font-size: 0.9rem;">By the way...</p>
-        <p class="fade-in delay-2" style="opacity: 0.8; font-size: 0.9rem;">I don't forget important dates.</p>
-        <h1 class="fade-in delay-3" style="color: #ffda79;">Happy Birthday :)</h1>
+        <p class="fade-in delay-2" style="opacity: 0.8; font-size: 0.9rem;">didn’t want this day to go unnoticed…</p>
+        <h1 class="fade-in delay-3" style="color: #ffda79;">Happy Birthday, you :)</h1>
         
         <button class="btn fade-in delay-4" style="width: auto; padding: 12px 40px; margin-top: 20px;" onclick="nextPage(6, 7)">Read Message 💌</button>
     </div>
 
-    <div id="page-7" class="screen">
+<div id="page-7" class="screen">
         <div class="polaroid fade-in delay-1" style="width: 200px; transform: rotate(0deg); margin-bottom: 20px;">
             <img src="images/img4.png" alt="Back Photo" class="photo-img" onerror="this.onerror=null; this.src='images/img4.jpg';">
         </div>
         <p class="fade-in delay-2" style="font-size: 0.95rem; text-align: left; max-width: 85%;">I know you’re busy chasing something big right now...</p>
-        <p class="fade-in delay-3" style="font-size: 0.95rem; text-align: left; max-width: 85%;">but I just wanted to make sure your day doesn’t go unnoticed.</p>
-        <p class="fade-in delay-4" style="font-size: 1.05rem; font-weight: 500; color: #ffda79; margin-top: 10px;">Meet soon?</p>
+        <p class="fade-in delay-3" style="font-size: 0.95rem; text-align: left; max-width: 85%;">And I know you'll absolutely crush it.</p>
+        <p class="fade-in delay-4" style="font-size: 0.95rem; text-align: left; max-width: 85%;">But today, just pause for a moment. Breathe. Smile.</p>
+        <p class="fade-in delay-5" style="font-size: 0.95rem; text-align: left; max-width: 85%; margin-bottom: 15px;">Because this day, and you... both deserve to be celebrated.</p>
+        
+        <p class="fade-in delay-5" style="font-size: 1.1rem; font-weight: 500; color: #ffda79; margin-top: 10px;">Meet soon?</p>
     </div>
-
     <script>
+        let musicStarted = false; 
+
         function nextPage(current, next) {
-            // Remove active class to hide current screen
             document.getElementById(`page-${current}`).classList.remove('active');
             
-            // Hide all backgrounds first
+            // Audio Logic
+            if (!musicStarted) {
+                let bgMusic = document.getElementById('bg-music');
+                bgMusic.volume = 0.4; 
+                bgMusic.play().catch(error => console.log("Audio play failed:", error));
+                musicStarted = true;
+            }
+
+            // Hide backgrounds
             document.querySelectorAll('.bg-layer').forEach(bg => bg.style.opacity = '0');
             document.body.classList.remove('show-flowers'); 
             
-            // Background Logic for new flow
+            // Background transitions
             if (next === 2) { 
                 document.getElementById('bg-floral-grid').style.opacity = '1'; 
             } 
@@ -161,18 +174,17 @@
                 document.getElementById('bg-floral-pastel').style.opacity = '1'; 
             }
             else if (next === 5) { 
-                document.getElementById('bg-sunflowers').style.opacity = '1'; 
+                document.getElementById('bg-page5').style.opacity = '1'; 
                 document.body.classList.add('show-flowers'); 
             }
             else if (next === 6) { 
                 document.getElementById('bg-black').style.opacity = '1'; 
             }
             else if (next === 7) { 
-                // Updated to use the floral background instead of sunset
                 document.getElementById('bg-floral-pastel').style.opacity = '1'; 
             }
 
-            // Show next page, allowing CSS animations to re-trigger
+            // Show next page
             setTimeout(() => { 
                 document.getElementById(`page-${next}`).classList.add('active'); 
             }, 600);
