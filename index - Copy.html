@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1 Min Break...</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,500&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            background-color: #0a0a0a; /* Starts pitch black */
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            transition: background 2s ease;
+        }
+
+        /* Dynamic Backgrounds */
+        .bg-layer {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0; transition: opacity 3s ease; z-index: 0;
+        }
+
+        #bg-sunset {
+            background: linear-gradient(to bottom, #2b4162 0%, #fa9c7a 50%, #e0c3fc 100%);
+        }
+        
+        #bg-sunflowers {
+            background: linear-gradient(to bottom, #fa9c7a 0%, #ffd700 100%);
+        }
+
+        #bg-black {
+            background-color: #050505;
+        }
+
+        /* Screen Management */
+        .screen {
+            position: absolute;
+            z-index: 10;
+            width: 90%;
+            max-width: 500px;
+            opacity: 0;
+            transform: translateY(20px);
+            visibility: hidden;
+            transition: all 1.2s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .screen.active {
+            opacity: 1;
+            transform: translateY(0);
+            visibility: visible;
+        }
+
+        /* Typography */
+        h1 { font-family: 'Playfair Display', serif; font-size: 2.8rem; margin-bottom: 20px; font-weight: 500;}
+        p { font-size: 1.1rem; line-height: 1.8; font-weight: 300; margin-bottom: 30px; letter-spacing: 0.5px; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+        .highlight { font-style: italic; color: #ffeaa7; }
+
+        /* Polaroid Photo Placeholder */
+        .polaroid {
+            background: #fff;
+            padding: 10px 10px 30px 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transform: rotate(-3deg);
+            margin-bottom: 30px;
+            width: 220px;
+            transition: transform 0.3s;
+        }
+        .polaroid:hover { transform: rotate(0deg) scale(1.05); }
+        
+        .photo-img {
+            width: 100%;
+            height: 250px;
+            background-color: #ddd; /* This will be replaced by her photo */
+            object-fit: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        /* Aesthetic Button */
+        .btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            color: #fff; padding: 12px 30px; border-radius: 30px;
+            font-family: 'Poppins', sans-serif; font-size: 0.9rem;
+            cursor: pointer; transition: all 0.4s;
+            backdrop-filter: blur(5px);
+        }
+        .btn:hover { background: rgba(255, 255, 255, 0.3); transform: translateY(-2px); }
+
+        /* Floating Sunflowers */
+        .flower { position: absolute; font-size: 2rem; opacity: 0; transition: opacity 2s; z-index: 1;}
+        .f1 { top: 20%; left: 10%; animation: float 4s infinite alternate; }
+        .f2 { bottom: 20%; right: 10%; animation: float 5s infinite alternate-reverse; }
+        .f3 { top: 10%; right: 20%; animation: float 6s infinite alternate; font-size: 1.5rem;}
+        
+        @keyframes float { 0% { transform: translateY(0) rotate(0deg); } 100% { transform: translateY(-20px) rotate(10deg); } }
+        
+        body.show-flowers .flower { opacity: 0.6; }
+
+    </style>
+</head>
+<body>
+
+    <div id="bg-sunset" class="bg-layer"></div>
+    <div id="bg-sunflowers" class="bg-layer"></div>
+    <div id="bg-black" class="bg-layer"></div>
+
+    <div class="flower f1">🌻</div>
+    <div class="flower f2">🌻</div>
+    <div class="flower f3">✨</div>
+
+    <div id="page-1" class="screen active">
+        <p>1 minute ka break le lo...<br><br>warna CS bhi tumse break le lega 😛</p>
+        <button class="btn" onclick="nextPage(1, 2)">Okay fine, 1 min ✨</button>
+    </div>
+
+    <div id="page-2" class="screen">
+        <p>Waise... tumne kabhi notice kiya hai...<br><br>kuch log bina zyada effort ke bhi achhe lagte hain?</p>
+        <button class="btn" onclick="nextPage(2, 3)">Continue 👀</button>
+    </div>
+
+    <div id="page-3" class="screen">
+        <div class="polaroid">
+            <img src="your-image-name.jpg" alt="Her Photo Here" class="photo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div style="display:none; width: 100%; height: 250px; background:#ddd; color:#555; align-items:center; justify-content:center;">[Her Photo Here]</div>
+        </div>
+        <p>Like you...<br><br><span class="highlight">Simple, sorted, and somehow… different.</span></p>
+        <button class="btn" onclick="nextPage(3, 4)">Next 💛</button>
+    </div>
+
+    <div id="page-4" class="screen">
+        <p style="font-size: 1.2rem;">Sunflowers always turn towards the sun...</p>
+        <p style="font-size: 1rem; opacity: 0.9;">good thing you don’t... <br>warna sab tumhe hi dekhte rehte 😛</p>
+        <button class="btn" onclick="nextPage(4, 5)">One last thing...</button>
+    </div>
+
+    <div id="page-5" class="screen">
+        <p style="opacity: 0.8; font-size: 0.9rem;">By the way...<br>I don't forget important dates.</p>
+        <h1 style="color: #ffda79;">Happy Birthday :)</h1>
+        <button class="btn" style="margin-top: 20px;" onclick="nextPage(5, 6)">Read Message 💌</button>
+    </div>
+
+    <div id="page-6" class="screen">
+        <p style="font-size: 1rem; text-align: left;">I know you’re busy chasing something big right now...<br><br>but I just wanted to make sure your day doesn’t go unnoticed.</p>
+        <p style="font-size: 1.1rem; font-weight: 500; color: #ffda79; margin-top: 10px;">Meet soon?<br><span style="font-size: 0.8rem; font-weight: 300; color: #fff;">(this time no excuses 😌)</span></p>
+    </div>
+
+    <script>
+        function nextPage(current, next) {
+            // Hide current page
+            document.getElementById(`page-${current}`).classList.remove('active');
+            
+            // Background Logic based on the page we are going TO
+            if (next === 2 || next === 3) {
+                document.getElementById('bg-sunset').style.opacity = '1'; // Marine Drive sunset
+            } 
+            else if (next === 4) {
+                document.getElementById('bg-sunset').style.opacity = '0';
+                document.getElementById('bg-sunflowers').style.opacity = '1'; // Brighter for sunflowers
+                document.body.classList.add('show-flowers');
+            }
+            else if (next === 5) {
+                document.body.classList.remove('show-flowers');
+                document.getElementById('bg-sunflowers').style.opacity = '0';
+                document.getElementById('bg-black').style.opacity = '1'; // Cut to black for suspense
+            }
+            else if (next === 6) {
+                // Keep it dark but maybe slightly warmer for the emotional close
+                document.getElementById('bg-black').style.opacity = '0.9';
+            }
+
+            // Show next page with a slight delay for smooth transition
+            setTimeout(() => {
+                document.getElementById(`page-${next}`).classList.add('active');
+            }, 600); // 0.6 seconds delay
+        }
+    </script>
+</body>
+</html>
